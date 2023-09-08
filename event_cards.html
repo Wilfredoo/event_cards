@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Sentence Display</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-size: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: black;
+      color: white;
+    }
+    #display {
+      text-align: center;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    button {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="display"></div>
+  <button id="newGame">New Game</button>
+  <button id="drawIntrigue">Draw Intrigue Card</button>
+  <button id="drawDiscord">Draw Discord Card</button>
+
+  <script>
+ let intrigueSentences = [
+  "The player with the third highest number gets her role seen by a player of her choice.",
+  "The players with the two lowest even numbers see the team of the players to their left.",
+  "The players with the two highest odd numbers have their class seen by the players to their right.",
+  "The player with the lowest number looks at the team of the player with the second lowest number, who then looks at the team of the player with the third lowest number.",
+  "The player with the third lowest number looks at someone's team of her choice.",
+  "The player with the second highest number chooses a player. The chosen player chooses another player and sees his role. The original chooser may be chosen as well",
+  "Everyone close your eyes. Witches with even numbers and the highest number, open your eyes and look at each other for 5 seconds (1, 2... 5), now close them again. Everyone open your eyes.",
+  "Everyone close your eyes. Villagers with odd numbers and the player with the lowest number, open your eyes and look at each other for 5 seconds (1, 2... 5), now close them again. Everyone open your eyes.",
+  "The player with the lowest number reveals her class to everyone.",
+  "The player with the second lowest number reveals his class to two players of his choice.",
+  "The player with the highest number chooses to reveal either her team or her class to the player to her right.",
+  "The player with the second highest number reveals her team to one player of her choice and her class to another player of her choice.",
+  "Everyone close your eyes. Familiars with even numbers and Children with even numbers, open your eyes and look at each other for 5 seconds (1, 2... 5), now close them again. Everyone open your eyes.",
+  "Everyone close your eyes. Villagers with even numbers put your thumbs up. Witches with odd numbers, open your eyes for 5 seconds (1, 2... 5), now close them again. Villagers put your thumbs down. Everyone open your eyes.",
+  "The player with the second highest number chooses between the players to his left and to his right and sees the role of one of them.",
+  "The players with the lowest and highest numbers look at each other’s teams."
+];
+
+let discordSentences = [
+  "The next player to die, reveals her role, regardless of her class.",
+  "In the next voting session, Familiars must vote for themselves",
+  "In the next voting session, no one can vote with an X.",
+  "In the next voting session, all children must vote with an X.",
+  "All alive players with odd numbers shuffle roles among themselves.",
+  "In the next voting session, players with even numbers vote publicly. Reveal their votes only after the anonymous votes have been revealed",
+  "The player with the lowest even number and the player with the lowest odd number exchange roles.",
+  "The first player to have died comes back to life for one voting session and his vote counts as double. Show the revived player’s vote only after the anonymous votes have been revealed. If no player has died, discard this card and draw a new one.",
+  "In the next voting session, the players with the two highest numbers can’t vote.",
+  "In the next voting session, two voting cards are discarded at random.",
+  "The player with the third lowest number votes publicly, but his accusation counts as double. Reveal his vote only after the anonymous votes have been revealed",
+  "In the next voting session, the player with the second highest number can't vote and censors two other players from voting as well.",
+  "All alive players with even numbers circulate roles among themselves in ascendent order. E.g.: player 2 gives his role to player 4, player 4 to player 6 and player 6 to player 2",
+  "The second highest number can choose to kill a player in exchange for her own life. The attacked player participates in one more voting session before dying.",
+  "The player with the lowest number can choose to revive a dead player in exchange for his own life. If he does this, he can vote for one more round before dying. If there is no dead player, discard this card and take a new one",
+  "The dead player with the lowest number comes back to life, kills a player of his choice and adopts the killed player’s role as his own. If there is no dead player, discard this card and take a new one"
+];
+
+    let usedSentences = [];
+
+    function displayRandomSentence(pool, color) {
+      if (pool.length === 0) return;
+
+      const randomIndex = Math.floor(Math.random() * pool.length);
+      const randomSentence = pool.splice(randomIndex, 1)[0];
+
+      usedSentences.push(randomSentence);
+
+      const display = document.getElementById("display");
+      display.innerText = randomSentence;
+      display.style.backgroundColor = color;
+    }
+
+    document.getElementById("newGame").addEventListener("click", function() {
+      intrigueSentences = ["Intrigue 1", "Intrigue 2", "Intrigue 3"];
+      discordSentences = ["Discord 1", "Discord 2", "Discord 3"];
+      usedSentences = [];
+
+      const display = document.getElementById("display");
+      display.innerText = "";
+      display.style.backgroundColor = "black";
+    });
+
+    document.getElementById("drawIntrigue").addEventListener("click", function() {
+      displayRandomSentence(intrigueSentences, "blue");
+    });
+
+    document.getElementById("drawDiscord").addEventListener("click", function() {
+      displayRandomSentence(discordSentences, "red");
+    });
+  </script>
+</body>
+</html>
