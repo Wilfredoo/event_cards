@@ -26,12 +26,73 @@
 <body>
   <div id="display"></div>
   <button id="newGame">New Game</button>
-  <button id="drawIntrigue">Draw Intrigue Card</button>
-  <button id="drawDiscord">Draw Discord Card</button>
+  <button id="drawCard">Draw Event Card</button>
+  <button id="showConfig">Player Configuration</button>
+  <button id="showPowers">Special Powers</button>
+  <button id="toggleReferenceSheet">Reference Sheet</button>
 
+<div id="powersInfo" style="display:none;">
+  <h3>Special Power Information</h3>
+  <ul>
+    <li><strong>Children:</strong> Selects 2 players and gives them a lucky bag with 5 white marbles and 1 black one. They take turns and take a marble until they have taken 4 of them or one of them dies.</li>
+    <li><strong>Witches:</strong> Puts a death spell on someone, if it's a villager, he dies in the end of the next 2 voting rounds, can be used at any time.</li>
+    <li><strong>Familiars:</strong> Can ask a yes or no question to anyone in the game and the player has to answer with truth and in public.</li>
+    <li><strong>Villagers:</strong> Can deny a vote but only before they have been revealed, this can be used twice.</li>
+  </ul>
+</div>
+
+  <div id="configTable" style="display:none;">
+    <table border="1">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Witches</th>
+          <th>Children</th>
+          <th>Villagers</th>
+          <th>& Familiars</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>4</td><td>1</td><td>1</td><td>2</td><td>2</td></tr>
+        <tr><td>5</td><td>1</td><td>1</td><td>2</td><td>2</td></tr>
+        <tr><td>6</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+        <tr><td>7</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+        <tr><td>8</td><td>2</td><td>3</td><td>2</td><td>2</td></tr>
+        <tr><td>9</td><td>3</td><td>2</td><td>3</td><td>3</td></tr>
+        <tr><td>10</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="referenceSheet" style="display:none;">
+    <h3>Reference Sheet</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          <th></th>
+          <th>The Town</th>
+          <th>The Coven</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Primary Role</td>
+          <td>Child</td>
+          <td>Witch</td>
+        </tr>
+        <tr>
+          <td>Secondary Role</td>
+          <td>Villager</td>
+          <td>Familiar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
   <script>
- let intrigueSentences = [
-  "The player with the third highest number gets her role seen by a player of her choice.",
+
+
+let eventCards = [
+"The player with the third highest number gets her role seen by a player of her choice.",
   "The players with the two lowest even numbers see the team of the players to their left.",
   "The players with the two highest odd numbers have their class seen by the players to their right.",
   "The player with the lowest number looks at the team of the player with the second lowest number, who then looks at the team of the player with the third lowest number.",
@@ -46,10 +107,7 @@
   "Everyone close your eyes. Familiars with even numbers and Children with even numbers, open your eyes and look at each other for 5 seconds (1, 2... 5), now close them again. Everyone open your eyes.",
   "Everyone close your eyes. Villagers with even numbers put your thumbs up. Witches with odd numbers, open your eyes for 5 seconds (1, 2... 5), now close them again. Villagers put your thumbs down. Everyone open your eyes.",
   "The player with the second highest number chooses between the players to his left and to his right and sees the role of one of them.",
-  "The players with the lowest and highest numbers look at each other’s teams."
-];
-
-let discordSentences = [
+  "The players with the lowest and highest numbers look at each other’s teams.",
   "The next player to die, reveals her role, regardless of her class.",
   "In the next voting session, Familiars must vote for themselves",
   "In the next voting session, no one can vote with an X.",
@@ -84,8 +142,7 @@ let discordSentences = [
     }
 
     document.getElementById("newGame").addEventListener("click", function() {
-      intrigueSentences = ["Intrigue 1", "Intrigue 2", "Intrigue 3"];
-      discordSentences = ["Discord 1", "Discord 2", "Discord 3"];
+  
       usedSentences = [];
 
       const display = document.getElementById("display");
@@ -93,13 +150,40 @@ let discordSentences = [
       display.style.backgroundColor = "black";
     });
 
-    document.getElementById("drawIntrigue").addEventListener("click", function() {
-      displayRandomSentence(intrigueSentences, "blue");
+    document.getElementById("drawCard").addEventListener("click", function() {
+      displayRandomSentence(eventCards, "black");
     });
 
-    document.getElementById("drawDiscord").addEventListener("click", function() {
-      displayRandomSentence(discordSentences, "red");
-    });
+
+
+    document.getElementById("showConfig").addEventListener("click", function() {
+  const table = document.getElementById("configTable");
+  if (table.style.display === "none") {
+    table.style.display = "block";
+  } else {
+    table.style.display = "none";
+  }
+});
+document.getElementById("showPowers").addEventListener("click", function() {
+  const powers = document.getElementById("powersInfo");
+  if (powers.style.display === "none") {
+    powers.style.display = "block";
+  } else {
+    powers.style.display = "none";
+  }
+});
+
+document.getElementById("toggleReferenceSheet").addEventListener("click", function() {
+  const sheet = document.getElementById("referenceSheet");
+  if (sheet.style.display === "none") {
+    sheet.style.display = "block";
+  } else {
+    sheet.style.display = "none";
+  }
+});
+
+
+
   </script>
 </body>
 </html>
