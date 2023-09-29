@@ -25,7 +25,7 @@
 </head>
 <body>
   <div id="display"></div>
-  <button id="newGame">Neeew Game</button>
+  <button id="newGame">New Game</button>
   <button id="drawCard">Draw Event Card</button>
   <button id="showConfig">Player Configuration</button>
   <button id="showPowers">Special Powers</button>
@@ -92,38 +92,35 @@
 
 
 let eventCards = [
-"The player with the third highest number gets her role seen by a player of her choice.",
+  "The player with the third-highest number reveals their role to a player of their choice.",
   "The players with the two lowest even numbers see the team of the players to their left.",
   "The players with the two highest odd numbers have their class seen by the players to their right.",
-  "The player with the lowest number looks at the team of the player with the second lowest number, who then looks at the team of the player with the third lowest number.",
-  "The player with the third lowest number looks at someone's team of her choice.",
-  "The player with the second highest number chooses a player. The chosen player chooses another player and sees his role. The original chooser may be chosen as well",
-  "Everyone close your eyes. Witches with even numbers and the highest number, open your eyes and look at each other for 5 seconds (1, 2... 5), now close them again. Everyone open your eyes.",
-  "Everyone close your eyes. Villagers with odd numbers and the player with the lowest number, open your eyes and look at each other for 5 seconds (1, 2... 5), now close them again. Everyone open your eyes.",
-  "The player with the lowest number reveals her class to everyone.",
-  "The player with the second lowest number reveals his class to two players of his choice.",
-  "The player with the highest number chooses to reveal either her team or her class to the player to her right.",
-  "The player with the second highest number reveals her team to one player of her choice and her class to another player of her choice.",
-  "Everyone close your eyes. Familiars with even numbers and Children with even numbers, open your eyes and look at each other for 5 seconds (1, 2... 5), now close them again. Everyone open your eyes.",
-  "Everyone close your eyes. Villagers with even numbers put your thumbs up. Witches with odd numbers, open your eyes for 5 seconds (1, 2... 5), now close them again. Villagers put your thumbs down. Everyone open your eyes.",
-  "The player with the second highest number chooses between the players to his left and to his right and sees the role of one of them.",
+  "The player with the third-lowest number looks at someone's team of their choice.",
+  "The player with the second-highest number chooses a player. The chosen player picks another player and reveals their role. The original chooser may also be chosen.",
+  "The player with the lowest number reveals their class to everyone.",
+  "The player with the second-lowest number reveals their team to two players of their choice.",
+  "The player with the second-highest number chooses between the players to their left and to their right and sees the role of one of them.",
   "The players with the lowest and highest numbers look at each other’s teams.",
-  "The next player to die, reveals her role, regardless of her class.",
-  "In the next voting session, Familiars must vote for themselves",
+  "The next player to die reveals their role, regardless of their class.",
+  "In the next voting session, Familiars must vote for themselves.",
   "In the next voting session, no one can vote with an X.",
   "In the next voting session, all children must vote with an X.",
-  "All alive players with odd numbers shuffle roles among themselves.",
-  "In the next voting session, players with even numbers vote publicly. Reveal their votes only after the anonymous votes have been revealed",
-  "The player with the lowest even number and the player with the lowest odd number exchange roles.",
-  "The first player to have died comes back to life for one voting session and his vote counts as double. Show the revived player’s vote only after the anonymous votes have been revealed. If no player has died, discard this card and draw a new one.",
+  "All alive players with odd numbers shuffle roles among themselves forever.",
+  "In the next voting session, players with even numbers vote publicly. Reveal their votes only after the anonymous votes have been revealed.",
+  "The player with the lowest even number and the player with the lowest odd number exchange roles for one round. After the voting round, they get their role back if it's still alive.",
+  "The first player to have died comes back to life for one voting session, and their vote counts as double. Show the revived player’s vote only after the anonymous votes have been revealed. If no player has died, discard this card and draw a new one.",
   "In the next voting session, the players with the two highest numbers can’t vote.",
   "In the next voting session, two voting cards are discarded at random.",
-  "The player with the third lowest number votes publicly, but his accusation counts as double. Reveal his vote only after the anonymous votes have been revealed",
-  "In the next voting session, the player with the second highest number can't vote and censors two other players from voting as well.",
-  "All alive players with even numbers circulate roles among themselves in ascendent order. E.g.: player 2 gives his role to player 4, player 4 to player 6 and player 6 to player 2",
-  "The second highest number can choose to kill a player in exchange for her own life. The attacked player participates in one more voting session before dying.",
-  "The player with the lowest number can choose to revive a dead player in exchange for his own life. If he does this, he can vote for one more round before dying. If there is no dead player, discard this card and take a new one",
-  "The dead player with the lowest number comes back to life, kills a player of his choice and adopts the killed player’s role as his own. If there is no dead player, discard this card and take a new one"
+  "The player with the third-lowest number votes publicly, but their accusation counts as double. Reveal their vote only after the anonymous votes have been revealed.",
+  "In the next voting session, the player with the second-highest number can't vote and censors two other players from voting as well.",
+  "All alive players with even numbers circulate roles among themselves in ascending order for one round. After the voting round takes place, they get their role back if they are still alive. Example: Player 2 gives their role to Player 4, Player 4 to Player 6, and Player 6 to Player 2.",
+  "The second-highest number can choose to kill a player in exchange for their own life. The attacked player participates in one more voting session before dying.",
+  "Everyone closes their eyes. The players with the highest and second-highest numbers open their eyes and can communicate using their hands and eyes. They can't show each other their roles, though.",
+  "This card will affect players with even numbers only. Once you have identified them, proceed to read the following text out loud: 'Everyone close your eyes. If you are a Familiar with an even number or a Child with an even number, open your eyes now and look at each other for 5 seconds. One, two, three, four, five. Close your eyes again. Everyone open your eyes.'",
+  "Silence! Everyone must play this round silently until the votes have been cast.",
+  "This round, everyone must vote for even numbers. (If there are no even numbers left, discard this card and pick a new one.)",
+  "Everyone reveals their class. Familiars can lie about it.",
+  "All dead players who have not revealed their role so far, reveal it."
 ];
 
     let usedSentences = [];
